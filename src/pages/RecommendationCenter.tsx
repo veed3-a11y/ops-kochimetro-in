@@ -207,7 +207,7 @@ export default function RecommendationCenter() {
       toast.success("Induction plan published!", {
         description: `${recommendedForService} trainsets scheduled for tonight's service`,
       });
-      // Navigate to final review or back to dashboard
+      navigate("/validation");
     }, 1500);
   };
 
