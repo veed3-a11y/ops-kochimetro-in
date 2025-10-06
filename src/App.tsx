@@ -7,6 +7,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import FleetBoard from "./pages/FleetBoard";
 import PlannerCockpit from "./pages/PlannerCockpit";
+import RecommendationCenter from "./pages/RecommendationCenter";
 import Analytics from "./pages/Analytics";
 import NotFound from "./pages/NotFound";
 
@@ -33,6 +34,7 @@ const App = () => (
                 <Routes>
                   <Route path="/" element={<FleetBoard />} />
                   <Route path="/planner" element={<PlannerCockpit />} />
+                  <Route path="/recommendation" element={<RecommendationCenter />} />
                   <Route path="/analytics" element={<Analytics />} />
                   <Route path="/depot" element={<FleetBoard />} />
                   <Route path="/simulator" element={<FleetBoard />} />
