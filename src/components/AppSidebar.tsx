@@ -1,4 +1,13 @@
-import { LayoutDashboard, Train, BarChart3, FileText, Settings, Map, Calculator } from "lucide-react";
+import { 
+  LayoutDashboard, 
+  Train, 
+  BarChart3, 
+  Settings, 
+  Calculator, 
+  CheckSquare, 
+  Lightbulb,
+  Gauge
+} from "lucide-react";
 import { NavLink } from "react-router-dom";
 import {
   Sidebar,
@@ -12,14 +21,24 @@ import {
   SidebarHeader,
 } from "@/components/ui/sidebar";
 
-const navItems = [
+const operationsItems = [
   { title: "Fleet Board", url: "/", icon: LayoutDashboard },
+  { title: "Operations Dashboard", url: "/operations", icon: Gauge },
+];
+
+const planningItems = [
   { title: "Planner Cockpit", url: "/planner", icon: Train },
-  { title: "Depot Map", url: "/depot", icon: Map },
-  { title: "What-If Simulator", url: "/simulator", icon: Calculator },
-  { title: "Analytics", url: "/analytics", icon: BarChart3 },
-  { title: "Reports & Audit", url: "/reports", icon: FileText },
-  { title: "Settings", url: "/settings", icon: Settings },
+  { title: "AI Recommendations", url: "/recommendation", icon: Lightbulb },
+  { title: "Plan Validation", url: "/validation", icon: CheckSquare },
+];
+
+const intelligenceItems = [
+  { title: "Analytics & Insights", url: "/analytics", icon: BarChart3 },
+  { title: "What-If Simulator", url: "/simulation", icon: Calculator },
+];
+
+const adminItems = [
+  { title: "Admin Console", url: "/admin", icon: Settings },
 ];
 
 export function AppSidebar() {
@@ -36,10 +55,85 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+          <SidebarGroupLabel>Operations</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {navItems.map((item) => (
+              {operationsItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <NavLink
+                      to={item.url}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                          : "hover:bg-sidebar-accent/50"
+                      }
+                    >
+                      <item.icon className="h-4 w-4" />
+                      <span>{item.title}</span>
+                    </NavLink>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Planning</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {planningItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <NavLink
+                      to={item.url}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                          : "hover:bg-sidebar-accent/50"
+                      }
+                    >
+                      <item.icon className="h-4 w-4" />
+                      <span>{item.title}</span>
+                    </NavLink>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Intelligence</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {intelligenceItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <NavLink
+                      to={item.url}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                          : "hover:bg-sidebar-accent/50"
+                      }
+                    >
+                      <item.icon className="h-4 w-4" />
+                      <span>{item.title}</span>
+                    </NavLink>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Administration</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {adminItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <NavLink
