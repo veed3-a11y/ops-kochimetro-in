@@ -11,6 +11,7 @@ import RecommendationCenter from "./pages/RecommendationCenter";
 import PlanValidation from "./pages/PlanValidation";
 import OperationsDashboard from "./pages/OperationsDashboard";
 import Analytics from "./pages/Analytics";
+import SimulationPlanning from "./pages/SimulationPlanning";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const App = () => (
                   <Route path="/validation" element={<PlanValidation />} />
                   <Route path="/operations" element={<OperationsDashboard />} />
                   <Route path="/analytics" element={<Analytics />} />
+                  <Route path="/simulation" element={<SimulationPlanning />} />
                   <Route path="/depot" element={<FleetBoard />} />
                   <Route path="/simulator" element={<FleetBoard />} />
                   <Route path="/reports" element={<FleetBoard />} />

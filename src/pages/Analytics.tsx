@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { AnalyticsKPITiles } from "@/components/AnalyticsKPITiles";
 import { TrendCharts } from "@/components/TrendCharts";
@@ -17,6 +18,7 @@ import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { format } from "date-fns";
 
 export default function Analytics() {
+  const navigate = useNavigate();
   const [dateRange, setDateRange] = useState<{ from: Date; to: Date }>({
     from: new Date(2025, 9, 1), // Oct 1, 2025
     to: new Date(2025, 9, 30), // Oct 30, 2025
@@ -228,6 +230,9 @@ export default function Analytics() {
             </span>
           </div>
           <div className="flex gap-2">
+            <Button variant="outline" onClick={() => navigate("/simulation")}>
+              Simulation Planning
+            </Button>
             <Button variant="outline" onClick={handleViewRawData}>
               <Search className="h-4 w-4 mr-2" />
               View Raw Data
