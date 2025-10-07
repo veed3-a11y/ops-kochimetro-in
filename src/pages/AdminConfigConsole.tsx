@@ -327,7 +327,7 @@ export default function AdminConfigConsole() {
       <div className="border-b bg-card px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm" onClick={() => navigate("/")}>
+			<Button variant="ghost" size="sm" onClick={() => navigate("/fleet")}>
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Dashboard
             </Button>

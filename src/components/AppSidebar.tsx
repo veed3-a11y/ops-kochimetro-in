@@ -22,8 +22,8 @@ import {
 } from "@/components/ui/sidebar";
 
 const operationsItems = [
-  { title: "Fleet Board", url: "/", icon: LayoutDashboard },
-  { title: "Operations Dashboard", url: "/operations", icon: Gauge },
+	{ title: "Fleet Board", url: "/", icon: LayoutDashboard },
+	{ title: "Operations Dashboard", url: "/operations", icon: Gauge },
 ];
 
 const planningItems = [

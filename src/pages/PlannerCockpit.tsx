@@ -78,13 +78,36 @@ export default function PlannerCockpit() {
     { id: "4", type: "upload" as const, message: "Job card status synced from Maximo", user: "System", timestamp: "20:00 IST" },
   ];
 
+  // const handleGeneratePlan = () => {
+  //   toast.loading("Generating induction plan...", { duration: 1500 });
+  //   setTimeout(() => {
+  //     toast.success("Plan generated successfully!");
+  //     navigate("/recommendation");
+  //   }, 1500);
+  // };
+  
   const handleGeneratePlan = () => {
-    toast.loading("Generating induction plan...", { duration: 1500 });
+  const planPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
-      toast.success("Plan generated successfully!");
-      navigate("/recommendation");
+      // Simulate success (you can add error handling logic here)
+      resolve("success");
     }, 1500);
-  };
+  });
+
+  toast.promise(planPromise, {
+    loading: 'Publishing induction plan...',
+    success: 'Induction plan published!',
+    error: 'Failed to publish induction plan',
+  });
+
+  planPromise.then(() => {
+    navigate("/recommendation");
+  }).catch(() => {
+    // Handle error case if needed
+    console.error("Plan generation failed");
+  });
+};
+
 
   const handleRefresh = () => {
     setLastSync(new Date());

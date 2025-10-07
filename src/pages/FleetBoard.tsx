@@ -63,20 +63,48 @@ export default function FleetBoard() {
     return matchesSearch && matchesStatus && matchesBay && matchesBranding;
   });
 
-  const handleGeneratePlan = () => {
-    if (dataFreshness < 90) {
-      toast.warning("Data freshness below 90%", {
-        description: "Consider refreshing data before generating plan",
-      });
-      return;
-    }
+  // const handleGeneratePlan = () => {
+  //   if (dataFreshness < 90) {
+  //     toast.warning("Data freshness below 90%", {
+  //       description: "Consider refreshing data before generating plan",
+  //     });
+  //     return;
+  //   }
     
-    toast.loading("Generating induction plan...", { duration: 1500 });
+  //   toast.loading("Generating induction plan...", { duration: 1500 });
+  //   setTimeout(() => {
+  //     toast.success("Plan generated successfully!");
+  //     navigate("/recommendation");
+  //   }, 1500);
+  // };
+
+  const handleGeneratePlan = () => {
+  if (dataFreshness < 90) {
+    toast.warning("Data freshness below 90%", {
+      description: "Consider refreshing data before generating plan",
+    });
+    return;
+  }
+  
+  const planPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
-      toast.success("Plan generated successfully!");
-      navigate("/recommendation");
+      resolve("success");
     }, 1500);
-  };
+  });
+
+  toast.promise(planPromise, {
+    loading: 'Publishing induction plan...',
+    success: 'Induction plan published!',
+    error: 'Failed to publish induction plan',
+  });
+
+  planPromise.then(() => {
+    navigate("/recommendation");
+  }).catch(() => {
+    console.error("Plan generation failed");
+  });
+};
+
 
   const handleRefresh = () => {
     setLastSync(new Date());

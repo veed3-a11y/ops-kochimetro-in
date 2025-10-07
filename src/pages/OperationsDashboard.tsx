@@ -175,19 +175,34 @@ export default function OperationsDashboard() {
     });
   };
 
-  const handleGenerateReport = () => {
-    toast({
-      title: "Generating Morning Report",
-      description: "Please wait while we compile the readiness summary...",
-    });
+  // const handleGenerateReport = () => {
+  //   toast({
+  //     title: "Generating Morning Report",
+  //     description: "Please wait while we compile the readiness summary...",
+  //   });
     
-    setTimeout(() => {
-      toast({
-        title: "Report Generated",
-        description: "Morning readiness report has been created successfully",
-      });
-    }, 2000);
-  };
+  //   setTimeout(() => {
+  //     toast({
+  //       title: "Report Generated",
+  //       description: "Morning readiness report has been created successfully",
+  //     });
+  //   }, 2000);
+  // };
+
+  const handleGenerateReport = () => {
+  toast({
+    title: "Generating Morning Report",
+    description: "Please wait while we compile the readiness summary...",
+  });
+  
+  setTimeout(() => {
+    toast({
+      title: "Report Generated",
+      description: "Morning readiness report has been created successfully",
+    });
+  }, 2000);
+};
+
 
   // Find matching trainset data for the selected rake
   const getTrainsetData = (rakeId: string): Trainset | null => {

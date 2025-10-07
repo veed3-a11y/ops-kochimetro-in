@@ -194,22 +194,48 @@ export default function RecommendationCenter() {
     }
   };
 
-  const handlePublish = () => {
-    if (validationWarnings.some(w => w.severity === "error")) {
-      toast.error("Cannot publish with validation errors", {
-        description: "Resolve all errors before publishing",
-      });
-      return;
-    }
+  // const handlePublish = () => {
+  //   if (validationWarnings.some(w => w.severity === "error")) {
+  //     toast.error("Cannot publish with validation errors", {
+  //       description: "Resolve all errors before publishing",
+  //     });
+  //     return;
+  //   }
 
-    toast.loading("Publishing induction plan...", { duration: 1500 });
+  //   toast.loading("Publishing induction plan...", { duration: 1500 });
+  //   setTimeout(() => {
+  //     toast.success("Induction plan published!", {
+  //       description: `${recommendedForService} trainsets scheduled for tonight's service`,
+  //     });
+  //     navigate("/validation");
+  //   }, 1500);
+  // };
+
+  const handlePublish = () => {
+  if (validationWarnings.some(w => w.severity === "error")) {
+    toast.error("Cannot publish with validation errors", {
+      description: "Resolve all errors before publishing",
+    });
+    return;
+  }
+  
+  const publishPromise = new Promise((resolve) => {
     setTimeout(() => {
-      toast.success("Induction plan published!", {
-        description: `${recommendedForService} trainsets scheduled for tonight's service`,
-      });
-      navigate("/validation");
+      resolve("success");
     }, 1500);
-  };
+  });
+
+  toast.promise(publishPromise, {
+    loading: 'Publishing induction plan...',
+    success: 'Induction plan published!',
+    error: 'Failed to publish induction plan',
+  });
+
+  publishPromise.then(() => {
+    navigate("/validation");
+  });
+};
+
 
   const handleDismissWarning = (id: string) => {
     setValidationWarnings(prev => prev.filter(w => w.id !== id));
@@ -224,12 +250,12 @@ export default function RecommendationCenter() {
         {/* Header */}
         <div className="flex items-start justify-between">
           <div>
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              onClick={() => navigate("/")} 
-              className="mb-2 -ml-2"
-            >
+				<Button 
+					variant="ghost" 
+					size="sm" 
+					onClick={() => navigate("/fleet")} 
+					className="mb-2 -ml-2"
+				>
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Fleet Board
             </Button>

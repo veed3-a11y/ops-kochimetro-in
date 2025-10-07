@@ -166,44 +166,95 @@ export default function PlanValidation() {
     );
   };
 
+  // const handleRevalidate = () => {
+  //   toast.loading("Revalidating all rules...", { duration: 1500 });
+  //   setTimeout(() => {
+  //     toast.success("Validation complete", {
+  //       description: `${validatedCount} rules passed, ${warningsCount} warnings`,
+  //     });
+  //   }, 1500);
+  // };
+
   const handleRevalidate = () => {
-    toast.loading("Revalidating all rules...", { duration: 1500 });
+  const revalidatePromise = new Promise((resolve) => {
     setTimeout(() => {
-      toast.success("Validation complete", {
-        description: `${validatedCount} rules passed, ${warningsCount} warnings`,
-      });
+      resolve("success");
     }, 1500);
-  };
+  });
+
+  toast.promise(revalidatePromise, {
+    loading: 'Revalidating all rules...',
+    success: `Validation complete - ${validatedCount} rules passed, ${warningsCount} warnings`,
+    error: 'Validation failed',
+  });
+};
+
+
+  // const handlePublish = () => {
+  //   const allChecked = checklistItems.every(item => item.checked);
+    
+  //   if (conflictsCount > 0) {
+  //     toast.error("Cannot publish with critical conflicts", {
+  //       description: "Please resolve all critical conflicts before publishing",
+  //     });
+  //     return;
+  //   }
+
+  //   if (!allChecked) {
+  //     toast.warning("Checklist incomplete", {
+  //       description: "Please complete all checklist items before publishing",
+  //     });
+  //     return;
+  //   }
+
+  //   toast.loading("Publishing final plan...", { duration: 2000 });
+  //   setTimeout(() => {
+  //     toast.success("Induction Plan Published!", {
+  //       description: "Plan locked and synced to Operations Dashboard",
+  //     });
+      
+  //     // Navigate to Operations Dashboard after successful publish
+  //     setTimeout(() => {
+  //       navigate("/operations");
+  //     }, 1500);
+  //   }, 2000);
+  // };
 
   const handlePublish = () => {
-    const allChecked = checklistItems.every(item => item.checked);
-    
-    if (conflictsCount > 0) {
-      toast.error("Cannot publish with critical conflicts", {
-        description: "Please resolve all critical conflicts before publishing",
-      });
-      return;
-    }
-
-    if (!allChecked) {
-      toast.warning("Checklist incomplete", {
-        description: "Please complete all checklist items before publishing",
-      });
-      return;
-    }
-
-    toast.loading("Publishing final plan...", { duration: 2000 });
+  const allChecked = checklistItems.every(item => item.checked);
+  
+  if (conflictsCount > 0) {
+    toast.error("Cannot publish with critical conflicts", {
+      description: "Please resolve all critical conflicts before publishing",
+    });
+    return;
+  }
+  if (!allChecked) {
+    toast.warning("Checklist incomplete", {
+      description: "Please complete all checklist items before publishing",
+    });
+    return;
+  }
+  
+  const publishPromise = new Promise((resolve) => {
     setTimeout(() => {
-      toast.success("Induction Plan Published!", {
-        description: "Plan locked and synced to Operations Dashboard",
-      });
-      
-      // Navigate to Operations Dashboard after successful publish
-      setTimeout(() => {
-        navigate("/operations");
-      }, 1500);
+      resolve("success");
     }, 2000);
-  };
+  });
+
+  toast.promise(publishPromise, {
+    loading: 'Publishing final plan...',
+    success: 'Induction Plan Published!',
+    error: 'Failed to publish final plan',
+  });
+
+  publishPromise.then(() => {
+    setTimeout(() => {
+      navigate("/operations");
+    }, 1500);
+  });
+};
+
 
   const handleExport = () => {
     toast.success("Plan exported", {
