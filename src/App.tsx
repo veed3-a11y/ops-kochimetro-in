@@ -12,6 +12,7 @@ import PlanValidation from "./pages/PlanValidation";
 import OperationsDashboard from "./pages/OperationsDashboard";
 import Analytics from "./pages/Analytics";
 import SimulationPlanning from "./pages/SimulationPlanning";
+import AdminConfigConsole from "./pages/AdminConfigConsole";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
                   <Route path="/operations" element={<OperationsDashboard />} />
                   <Route path="/analytics" element={<Analytics />} />
                   <Route path="/simulation" element={<SimulationPlanning />} />
+                  <Route path="/admin" element={<AdminConfigConsole />} />
                   <Route path="/depot" element={<FleetBoard />} />
                   <Route path="/simulator" element={<FleetBoard />} />
                   <Route path="/reports" element={<FleetBoard />} />
