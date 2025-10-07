@@ -9,6 +9,7 @@ import FleetBoard from "./pages/FleetBoard";
 import PlannerCockpit from "./pages/PlannerCockpit";
 import RecommendationCenter from "./pages/RecommendationCenter";
 import PlanValidation from "./pages/PlanValidation";
+import OperationsDashboard from "./pages/OperationsDashboard";
 import Analytics from "./pages/Analytics";
 import NotFound from "./pages/NotFound";
 
@@ -37,6 +38,7 @@ const App = () => (
                   <Route path="/planner" element={<PlannerCockpit />} />
                   <Route path="/recommendation" element={<RecommendationCenter />} />
                   <Route path="/validation" element={<PlanValidation />} />
+                  <Route path="/operations" element={<OperationsDashboard />} />
                   <Route path="/analytics" element={<Analytics />} />
                   <Route path="/depot" element={<FleetBoard />} />
                   <Route path="/simulator" element={<FleetBoard />} />

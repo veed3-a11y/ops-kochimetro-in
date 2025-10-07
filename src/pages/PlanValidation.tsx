@@ -197,7 +197,11 @@ export default function PlanValidation() {
       toast.success("Induction Plan Published!", {
         description: "Plan locked and synced to Operations Dashboard",
       });
-      // Could navigate to success page or dashboard
+      
+      // Navigate to Operations Dashboard after successful publish
+      setTimeout(() => {
+        navigate("/operations");
+      }, 1500);
     }, 2000);
   };
 
