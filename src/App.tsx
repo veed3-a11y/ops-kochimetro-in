@@ -42,17 +42,18 @@ const App = () => {
                 />
                 <main className="flex-1 p-6">
                   <Routes>
-                    <Route path="/" element={<FleetBoard />} />
-                    <Route path="/operations" element={<OperationsDashboard />} />
+                    <Route path="/" element={<PlannerCockpit />} />
+                    <Route path="/fleet" element={<FleetBoard />} />
                     <Route path="/planner" element={<PlannerCockpit />} />
                     <Route path="/recommendation" element={<RecommendationCenter />} />
                     <Route path="/validation" element={<PlanValidation />} />
+                    <Route path="/operations" element={<OperationsDashboard />} />
                     <Route path="/analytics" element={<Analytics />} />
                     <Route path="/simulation" element={<SimulationPlanning />} />
                     <Route path="/admin" element={<AdminConfigConsole />} />
-                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                     <Route path="*" element={<NotFound />} />
                   </Routes>
+
                 </main>
               </div>
               <SmartAlertsPanel isOpen={showAlerts} onClose={() => setShowAlerts(false)} />

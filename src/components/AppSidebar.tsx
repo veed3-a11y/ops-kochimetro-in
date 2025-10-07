@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/sidebar";
 
 const operationsItems = [
-	{ title: "Fleet Board", url: "/", icon: LayoutDashboard },
+	{ title: "Fleet Board", url: "/fleet", icon: LayoutDashboard },
 	{ title: "Operations Dashboard", url: "/operations", icon: Gauge },
 ];
 

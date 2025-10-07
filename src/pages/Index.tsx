@@ -1,3 +1,2 @@
-import FleetBoard from "./FleetBoard";
-
-export default FleetBoard;
+import PlannerCockpit from "./PlannerCockpit";
+export default PlannerCockpit;
